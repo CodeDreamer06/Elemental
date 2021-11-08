@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 600;
+    src: url('./fonts/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 700;
+    src: url('./fonts/Poppins-Bold.ttf');
+}
+
+body {
+    font-family: 'Poppins';
+    font-weight: 600;
+	margin: 0;  
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;    
+}

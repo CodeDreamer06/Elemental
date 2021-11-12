@@ -10,10 +10,8 @@ export default class Generators {
         return learntSort;
     }
 
-    static numericalOptions(currentElement) {
+    static numericalOptions(initialOption) {
         var options = [];
-        try { var initialOption = currentElement.number }
-        catch(TypeError) { }
         for (let i = initialOption; options.length < 4; i++) {
             options.push(i)
             if (i-2 > 0 && initialOption > 2) options.push(i-2);

@@ -4,6 +4,7 @@ import Generators from '../pages/session/generators';
 const actionTypes = {
 	TO_LEARN: 'TO_LEARN',
 	ADD_TAUGHT: 'ADD_TAUGHT',
+	ADD_LEARNT: 'ADD_LEARNT',
 	NEXT_ELEMENT: 'NEXT_ELEMENT'
 }
 
@@ -33,6 +34,13 @@ export const addTaught = id => {
 	}
 }
 
+export const addLearnt = id => {
+	return {
+		type: actionTypes.ADD_LEARNT,
+		payload: id
+	}
+}
+
 export const nextElement = () => {
 	return {
 		type: actionTypes.NEXT_ELEMENT,
@@ -44,7 +52,8 @@ const initialState = {
 	toLearn: [],
 	currentElement: { name: null, number: null },
 	learningCards: [],
-	taught: []
+	taught: [],
+	learnt: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -62,6 +71,11 @@ export default function reducer(state = initialState, action) {
 		return {
 			...state,
 			currentElement: state.toLearn[state.currentElement.number],
+		}
+	if(action.type === actionTypes.ADD_LEARNT)
+		return {
+			...state,
+			learnt: [...state.learnt, action.payload]
 		}
 	return state;
 }

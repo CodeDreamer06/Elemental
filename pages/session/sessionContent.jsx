@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Learn,
-    // Mcq,
+    Mcq,
     // Memory,
     // Match,
     // Dice,
@@ -16,6 +16,8 @@ const SessionContent = props => {
     switch(pageType) {
         case pageTypes.learn:
             return <Learn/>
+        case pageTypes.mcq:
+            return <Mcq/>
         default:
             return <h1>404</h1>
     }

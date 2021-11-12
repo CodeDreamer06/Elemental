@@ -30,7 +30,7 @@ export default class Generators {
         return options.sort(() => Math.random() - 0.5);
     }    
 
-    static lessonCards(currentNumber) {
+    static learningCards(currentNumber) {
         if(currentNumber >= 2)
             return Utilities.randomiseArray([elements[currentNumber - 1],
                     elements[currentNumber - 2],

@@ -2,10 +2,11 @@ import React from "react";
 import DiamondIcon from '../assets/icons/diamond.svg';
 import StreakIcon from '../assets/icons/streak.svg';
 import MoonIcon from '../assets/icons/moon.svg';
-import { useTheme } from '../providers/themeProvider';
+import { useDispatch } from 'react-redux';
+import { switchTheme } from '../services/theme';
 
 const Navbar = () => {
-    const { setTheme } = useTheme();
+    const dispatch = useDispatch();
     const diamonds = localStorage.getItem('ElDi') || localStorage.setItem('ElDi', 0)
     const streak = localStorage.getItem('ElSt') || localStorage.setItem('ElSt', 0)
     return ( 
@@ -23,7 +24,7 @@ const Navbar = () => {
                 <img
                     className="theme-switcher" 
                     src={MoonIcon} 
-                    onClick={setTheme}
+                    onClick={() => dispatch(switchTheme())}
                     alt="dark mode"/>
             </div>
         </nav>

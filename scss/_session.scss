@@ -49,13 +49,17 @@
     }
 }
 
+.session__bottom {
+    flex: 0 1 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .session .check-button {
     font-size: 2.2rem;
-    align-self: flex-end;
-    flex-shrink: 0;
     min-width: 18rem;
     padding: 0.8rem 4.5rem;
-    margin-right: 5rem;
+    margin-right: 1rem;
     margin-bottom: 5rem;
     @media only screen and ( max-width: 1000px ) {
         width: 90%;
@@ -67,6 +71,7 @@
 .question {
     margin: 2rem;
     font-size: 3.5rem;
+    flex: 0 1 auto;
 
     @media only screen and ( max-width: 800px ) {
         text-align: center;
@@ -75,6 +80,9 @@
 
 .session-content {
     @media only screen and ( min-width: 1128px ) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         flex: 1 0 auto;
         margin: 0 4rem;
 
@@ -111,9 +119,14 @@
     }
 }
 
+.learning-cards-wrapper {
+    flex: 1 1 auto;
+}
+
 .learning-cards {
     display: flex;
     justify-content: center;
+    flex: 1 1 auto;
 }
 
 .learning-card {

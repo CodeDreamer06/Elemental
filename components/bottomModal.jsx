@@ -1,12 +1,13 @@
 import React from 'react';
 import TickIcon from '../assets/icons/tick.svg';
 import WrongIcon from '../assets/icons/wrong.svg';
-import { useSelector, useDispatch } from 'react-redux';
-import { modal } from '../services';
+import { useSelector } from 'react-redux';
+import handleContinue from '../pages/session/handleContinue';
 
-const BottomModal = ({ correct, onBtnClick }) => {
+const BottomModal = props => {
     const modalData = useSelector(state => state.modal)
-    if (modalData.showModal) {
+    const correct = modalData.isCorrect;
+    if(modalData.showModal) {
         return <div className={!correct ? "bottom-modal__wrong" : "bottom-modal"}>
                 <div className="bottom-modal-text">
                     <img src={correct ? TickIcon : WrongIcon} alt="tick" />
@@ -16,7 +17,7 @@ const BottomModal = ({ correct, onBtnClick }) => {
                     </div>
                 </div>
                 <div className="bottom-modal-right">
-                    <button className="btn-primary" onClick={onBtnClick}>
+                    <button className="btn-primary" onClick={() => handleContinue()}>
                         {correct ? "Continue" : "Got it"}</button>
                 </div>
         </div>

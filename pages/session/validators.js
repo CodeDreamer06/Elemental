@@ -1,43 +1,26 @@
 import elements from '../../Elements';
 import lessonTypes from './lessonTypes';
+import pageTypes from './pageTypes';
+import store from '../../services/store';
 import { lessonType } from '../../services';
+import { addTaught } from '../../services/lesson'
+import { changeModal } from '../../services/modal';
 
 export default class Validators {
-	static learn(pageTypes, currentElement, currentOption, setIsCorrect, taught, setTaught, setState) {
-        const atomicNumber = currentElement.number
-        var state = {}
-        if(atomicNumber === currentOption) {
-            setIsCorrect(true)
-            if (!taught?.includes(atomicNumber)) setTaught(atomicNumber)
-            state = { 
-            	...state,
-            	modalData: { 
-            		showModal: true,
-            		type: pageTypes.learn,
-            		text: '' 
-            	} 
-            }
-    	}
-
-        else {
-            setIsCorrect(false);
-            state = {
-            	...state,
-            	modalData: {
-	                showModal: true,
-	                type: pageTypes.learn,
-	                repeat: true,
-	                text: `The atomic number of ${currentElement.name} is ${atomicNumber}.`
-            	}
-            }
+    static learn(currentOption) {
+        const lesson = store.getState().lesson
+        const { number, name } = lesson.currentElement
+        const modalData = {
+            showModal: true,
+            type: pageTypes.learn,
+            text: ''
         }
-
-        setState({
-        	...state,
-            previousMistake: false,
-            currentOption: null,
-        })
-	}
+        if(number === currentOption) {
+            store.dispatch(changeModal({ ...modalData, isCorrect: true, repeat: false }))
+            if(!lesson.taught?.includes(number)) store.dispatch(addTaught(number))
+        }
+        else store.dispatch(changeModal({ ...modalData, isCorrect: false, repeat: true, text: `The atomic number of ${name} is ${number}.`}))
+    }
 
     static dice(question, input, pageTypes, setIsCorrect, setState) {
         const answer = elements.find(el => el.number === question).name

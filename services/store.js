@@ -1,13 +1,17 @@
 import { createStore, combineReducers } from 'redux';
-import reducer from './lessonType';
-import { lessonType } from './';
+import { theme, lessonType, pageType, modal, score, lesson } from './';
 
-const allReducers = combineReducers({
-	lessonType
+const combinedReducers = combineReducers({
+	theme,
+	lessonType,
+	pageType,
+	modal,
+	score,
+	lesson
 })
 
 const store = createStore(
-	allReducers,
+	combinedReducers,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

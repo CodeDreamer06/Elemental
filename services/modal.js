@@ -11,6 +11,7 @@ const initialState = {
     showModal: false,
     type: 'basic-learning-page',
     text: '',
+    isCorrect: null,
     repeat: false
 }
 

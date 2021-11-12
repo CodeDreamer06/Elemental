@@ -3,9 +3,7 @@ import Navbar from '../components/navbar';
 import Banner from '../components/banner';
 import LessonCard from '../components/lessonCard';
 import DiamondIcon from '../assets/icons/diamond.svg';
-import { useTheme } from '../providers/themeProvider';
-import { useSelector, useDispatch } from 'react-redux';
-import { setLessonType } from '../services/lessonType';
+import { useSelector } from 'react-redux';
 
 const cardValues = [
     {
@@ -38,9 +36,7 @@ const cardValues = [
 ]
 
 const Dashboard = props => {
-  const { theme } = useTheme();
-  const lessonType = useSelector(state => state.lessonType)
-  const dispatch = useDispatch();
+  const theme = useSelector(state => state.theme)
   return (
     <div theme={theme+"-mode"}>
     	<Navbar/>
@@ -56,8 +52,6 @@ const Dashboard = props => {
                     </div>    			
     		</div>
     		<div className="dynamic-content">
-                <h1>{lessonType}</h1>
-                <button onClick={() => dispatch(setLessonType(Math.round(Math.random() * 10 + 1)))}>Do something</button>
     		</div>
     	</div>
     </div>

@@ -9,7 +9,7 @@ export const changeModal = modalData => ({
 
 const initialState = {
     showModal: false,
-    type: 'basic-learning-page',
+    type: 'basicLearning',
     text: '',
     isCorrect: null,
     repeat: false

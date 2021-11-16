@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 // import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Options from '../../components/options';
-import lessonTypes from './lessonTypes';
 import Validators from './validators';
 import Generators from './generators';
+import elements from '../../Elements';
 
 const Mcq = props => {
-    const element = useSelector(state => state.lesson.currentElement)
+    const element = useSelector(state => elements.find(el => el.number === state.lesson?.taught[0]))
     // let history = useHistory();
     const [currentOption, setCurrentOption] = useState();
     const [options, setOptions] = useState();

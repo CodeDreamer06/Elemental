@@ -1,8 +1,6 @@
 import elements from '../../Elements';
-import lessonTypes from './lessonTypes';
 import pageTypes from './pageTypes';
 import store from '../../services/store';
-import { lessonType } from '../../services';
 import { addTaught, addLearnt } from '../../services/lesson'
 import { changeModal } from '../../services/modal';
 import { addPercentage, addScore } from '../../services/score';

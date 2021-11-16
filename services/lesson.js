@@ -1,11 +1,13 @@
 import elements from '../Elements';
 import Generators from '../pages/session/generators';
+import pageTypes from '../pages/session/pageTypes'
 
 const actionTypes = {
 	TO_LEARN: 'TO_LEARN',
 	ADD_TAUGHT: 'ADD_TAUGHT',
+	REMOVE_TAUGHT: 'REMOVE_TAUGHT',
 	ADD_LEARNT: 'ADD_LEARNT',
-	NEXT_ELEMENT: 'NEXT_ELEMENT'
+	NEXT_ELEMENT: 'NEXT_ELEMENT',
 }
 
 export const addToLearn = () => {
@@ -34,6 +36,13 @@ export const addTaught = id => {
 	}
 }
 
+export const removeTaught = () => {
+	return {
+		type: actionTypes.REMOVE_TAUGHT,
+		payload: { }
+	}
+}
+
 export const addLearnt = id => {
 	return {
 		type: actionTypes.ADD_LEARNT,
@@ -41,19 +50,19 @@ export const addLearnt = id => {
 	}
 }
 
-export const nextElement = () => {
-	return {
-		type: actionTypes.NEXT_ELEMENT,
-		payload: {}
-	}
-}
+export const nextElement = () => ({
+	type: actionTypes.NEXT_ELEMENT,
+	payload: {}
+})
 
 const initialState = {
 	toLearn: [],
 	currentElement: { name: null, number: null },
 	learningCards: [],
 	taught: [],
-	learnt: []
+	learnt: [],
+	pageCount: 0,
+	pageType: pageTypes.learn
 }
 
 export default function reducer(state = initialState, action) {
@@ -67,11 +76,22 @@ export default function reducer(state = initialState, action) {
 			...state,
 			taught: [...state.taught, action.payload]
 		}
-	if(action.type === actionTypes.NEXT_ELEMENT)
+	if(action.type === actionTypes.REMOVE_TAUGHT)
 		return {
 			...state,
-			currentElement: state.toLearn[state.currentElement.number],
+			taught: state.taught.slice(1)
+		}		
+	if(action.type === actionTypes.NEXT_ELEMENT){
+		var pageType = pageTypes.learn
+		if(state.pageCount % 2) pageType = pageTypes.learn
+		else pageType = pageTypes.mcq
+		return {
+			...state,
+			pageType,
+			currentElement: pageType === pageTypes.learn ? state.toLearn[state.currentElement.number] : state.currentElement,
+			pageCount: state.pageCount + 1
 		}
+	}
 	if(action.type === actionTypes.ADD_LEARNT)
 		return {
 			...state,

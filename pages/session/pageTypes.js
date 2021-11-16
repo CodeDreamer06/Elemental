@@ -1,11 +1,11 @@
 const pageTypes = {
-	learn: "basic-learning-page",
-	mcq: "mcq-page",
-	dice: "dice-page",
-	match: "match-cards",
-	sort: "sorting-atoms",
-	pronounce: "pronounce-atoms",
-	memory: "memorization-technique",
+	learn: "basicLearning",
+	mcq: "mcq",
+	dice: "dice",
+	match: "matchCards",
+	sort: "sortingAtoms",
+	pronounce: "pronounceAtoms",
+	memory: "memorizationTechnique",
 	summary: "summary"
 }
 

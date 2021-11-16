@@ -12,7 +12,7 @@ import pageTypes from './pageTypes';
 import { useSelector } from 'react-redux';
 
 const SessionContent = props => {
-	const pageType = useSelector(state => state.pageType)
+	const pageType = useSelector(state => state.lesson.pageType)
     switch(pageType) {
         case pageTypes.learn:
             return <Learn/>
